@@ -1,21 +1,17 @@
-package com.example.ocrmaster;
+package com.example.ocrmaster.Service;
 
 import com.tencentcloudapi.common.Credential;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
-import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.ocr.v20181119.OcrClient;
-import com.tencentcloudapi.ocr.v20181119.models.*;
-import sun.misc.BASE64Encoder;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
+import com.tencentcloudapi.ocr.v20181119.models.GeneralEfficientOCRRequest;
+import com.tencentcloudapi.ocr.v20181119.models.GeneralEfficientOCRResponse;
+import org.springframework.stereotype.Service;
+@Service
 public class GeneralEfficientOCR {
-    public static void main(String[] args) {
-        String s = GeneralEfficientOCR.ImageToBase64ByLocal("C:\\Users\\g\\Desktop\\duiwu.png");
+
+    public  String start(String base64) {
 
         try {
             // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
@@ -33,44 +29,28 @@ public class GeneralEfficientOCR {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             GeneralEfficientOCRRequest req = new GeneralEfficientOCRRequest();
 //            req.setImageUrl("https://i.328888.xyz/2023/01/28/jDcwN.png");
-            req.setImageBase64(s);
+            req.setImageBase64(base64);
             // 返回的resp是一个GeneralEfficientOCRResponse的实例，与请求对象对应
             GeneralEfficientOCRResponse resp = client.GeneralEfficientOCR(req);
             // 输出json格式的字符串回包
-            System.out.println(GeneralEfficientOCRResponse.toJsonString(resp));
+//            System.out.println(GeneralEfficientOCRResponse.toJsonString(resp));
+//            JSONObject jsonObject = JSONObject.parseObject(GeneralEfficientOCRResponse.toJsonString(resp));
+//            JSONArray textDetections = jsonObject.getJSONArray("TextDetections");
+//            for (Object textDetection : textDetections) {
+//                JSONObject info = (JSONObject) textDetection;
+//                if ("3".equals(info.getJSONObject("AdvancedInfo").getJSONObject("Parag").getObject("ParagNo",String.class))){
+//                    System.out.println(info.get("DetectedText"));
+//                }
+//            }
+            return GeneralEfficientOCRResponse.toJsonString(resp);
+
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
+        return "";
+
     }
-    /**
-     * 本地图片转换成base64字符串
-     * @param imgFile	图片本地路径
-     * @return
-     *
-     * @author ZHANGJL
-     * @dateTime 2018-02-23 14:40:46
-     */
-    public static String ImageToBase64ByLocal(String imgFile) {// 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
 
-
-        InputStream in = null;
-        byte[] data = null;
-
-        // 读取图片字节数组
-        try {
-            in = new FileInputStream(imgFile);
-
-            data = new byte[in.available()];
-            in.read(data);
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // 对字节数组Base64编码
-        BASE64Encoder encoder = new BASE64Encoder();
-
-        return encoder.encode(data);// 返回Base64编码过的字节数组字符串
-    }
 
 }
 
