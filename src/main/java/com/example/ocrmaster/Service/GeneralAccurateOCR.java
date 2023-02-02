@@ -1,5 +1,8 @@
 package com.example.ocrmaster.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.example.ocrmaster.Pojo.OcrPojo;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -9,10 +12,14 @@ import com.tencentcloudapi.ocr.v20181119.models.GeneralAccurateOCRRequest;
 import com.tencentcloudapi.ocr.v20181119.models.GeneralAccurateOCRResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Service
 public class GeneralAccurateOCR
 {
-    public String start(String base64) {
+    public List<OcrPojo> start(String base64) {
         try{
             // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
             // 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
@@ -33,10 +40,13 @@ public class GeneralAccurateOCR
             GeneralAccurateOCRResponse resp = client.GeneralAccurateOCR(req);
             // 输出json格式的字符串回包
 //            System.out.println(GeneralAccurateOCRResponse.toJsonString(resp));
-            return GeneralAccurateOCRResponse.toJsonString(resp);
+            JSONArray textDetections = JSONObject.parseObject(GeneralAccurateOCRResponse.toJsonString(resp)).getJSONArray("TextDetections");
+            return textDetections.toJavaList(OcrPojo.class);
+
+
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
-        return "";
+        return new ArrayList<>();
     }
 }

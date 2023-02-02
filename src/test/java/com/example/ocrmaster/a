@@ -1,0 +1,255 @@
+{
+  "Angel": 359.989990234375,
+  "RequestId": "65fbb41a-8a42-42e1-8ff0-f333ddad4933",
+  "TextDetections": [
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":1}}",
+      "Confidence": 91,
+      "DetectedText": "征兵 刘备队",
+      "ItemPolygon": {
+        "Height": 19,
+        "Width": 93,
+        "X": 9,
+        "Y": 1
+      },
+
+      "Polygon": [
+        {
+          "X": 9,
+          "Y": 1
+        },
+        {
+          "X": 102,
+          "Y": 1
+        },
+        {
+          "X": 102,
+          "Y": 20
+        },
+        {
+          "X": 9,
+          "Y": 20
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":5}}",
+      "Confidence": 99,
+      "DetectedText": "02:32:16",
+      "ItemPolygon": {
+        "Height": 18,
+        "Width": 63,
+        "X": 152,
+        "Y": 2
+      },
+      "Polygon": [
+        {
+          "X": 152,
+          "Y": 2
+        },
+        {
+          "X": 215,
+          "Y": 2
+        },
+        {
+          "X": 215,
+          "Y": 20
+        },
+        {
+          "X": 152,
+          "Y": 20
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":2}}",
+      "Confidence": 99,
+      "DetectedText": "枪兵",
+      "ItemPolygon": {
+        "Height": 19,
+        "Width": 35,
+        "X": 87,
+        "Y": 26
+      },
+      "Polygon": [
+        {
+          "X": 87,
+          "Y": 26
+        },
+        {
+          "X": 122,
+          "Y": 26
+        },
+        {
+          "X": 122,
+          "Y": 45
+        },
+        {
+          "X": 87,
+          "Y": 45
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":6}}",
+      "Confidence": 99,
+      "DetectedText": "19396",
+      "ItemPolygon": {
+        "Height": 17,
+        "Width": 41,
+        "X": 173,
+        "Y": 27
+      },
+      "Polygon": [
+        {
+          "X": 173,
+          "Y": 27
+        },
+        {
+          "X": 214,
+          "Y": 27
+        },
+        {
+          "X": 214,
+          "Y": 44
+        },
+        {
+          "X": 173,
+          "Y": 44
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":3}}",
+      "Confidence": 99,
+      "DetectedText": "体力",
+      "ItemPolygon": {
+        "Height": 19,
+        "Width": 34,
+        "X": 88,
+        "Y": 62
+      },
+      "Polygon": [
+        {
+          "X": 88,
+          "Y": 62
+        },
+        {
+          "X": 122,
+          "Y": 62
+        },
+        {
+          "X": 122,
+          "Y": 81
+        },
+        {
+          "X": 88,
+          "Y": 81
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":7}}",
+      "Confidence": 99,
+      "DetectedText": "67/120",
+      "ItemPolygon": {
+        "Height": 17,
+        "Width": 50,
+        "X": 164,
+        "Y": 61
+      },
+      "Polygon": [
+        {
+          "X": 164,
+          "Y": 61
+        },
+        {
+          "X": 214,
+          "Y": 61
+        },
+        {
+          "X": 214,
+          "Y": 78
+        },
+        {
+          "X": 164,
+          "Y": 78
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":4}}",
+      "Confidence": 99,
+      "DetectedText": "士气",
+      "ItemPolygon": {
+        "Height": 19,
+        "Width": 34,
+        "X": 88,
+        "Y": 97
+      },
+      "Polygon": [
+        {
+          "X": 88,
+          "Y": 97
+        },
+        {
+          "X": 122,
+          "Y": 97
+        },
+        {
+          "X": 122,
+          "Y": 116
+        },
+        {
+          "X": 88,
+          "Y": 116
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    },
+    {
+      "AdvancedInfo": "{\"Parag\":{\"ParagNo\":8}}",
+      "Confidence": 99,
+      "DetectedText": "120/120",
+      "ItemPolygon": {
+        "Height": 17,
+        "Width": 57,
+        "X": 157,
+        "Y": 98
+      },
+      "Polygon": [
+        {
+          "X": 157,
+          "Y": 98
+        },
+        {
+          "X": 214,
+          "Y": 98
+        },
+        {
+          "X": 214,
+          "Y": 115
+        },
+        {
+          "X": 157,
+          "Y": 115
+        }
+      ],
+      "WordCoordPoint": [],
+      "Words": []
+    }
+  ]
+}

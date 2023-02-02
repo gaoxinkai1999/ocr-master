@@ -1,17 +1,25 @@
 package com.example.ocrmaster.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.example.ocrmaster.Pojo.OcrPojo;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.ocr.v20181119.OcrClient;
+import com.tencentcloudapi.ocr.v20181119.models.GeneralAccurateOCRResponse;
 import com.tencentcloudapi.ocr.v20181119.models.GeneralEfficientOCRRequest;
 import com.tencentcloudapi.ocr.v20181119.models.GeneralEfficientOCRResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class GeneralEfficientOCR {
 
-    public  String start(String base64) {
+    public List<OcrPojo> start(String base64) {
 
         try {
             // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
@@ -33,21 +41,13 @@ public class GeneralEfficientOCR {
             // 返回的resp是一个GeneralEfficientOCRResponse的实例，与请求对象对应
             GeneralEfficientOCRResponse resp = client.GeneralEfficientOCR(req);
             // 输出json格式的字符串回包
-//            System.out.println(GeneralEfficientOCRResponse.toJsonString(resp));
-//            JSONObject jsonObject = JSONObject.parseObject(GeneralEfficientOCRResponse.toJsonString(resp));
-//            JSONArray textDetections = jsonObject.getJSONArray("TextDetections");
-//            for (Object textDetection : textDetections) {
-//                JSONObject info = (JSONObject) textDetection;
-//                if ("3".equals(info.getJSONObject("AdvancedInfo").getJSONObject("Parag").getObject("ParagNo",String.class))){
-//                    System.out.println(info.get("DetectedText"));
-//                }
-//            }
-            return GeneralEfficientOCRResponse.toJsonString(resp);
+            JSONArray textDetections = JSONObject.parseObject(GeneralAccurateOCRResponse.toJsonString(resp)).getJSONArray("TextDetections");
+            return textDetections.toJavaList(OcrPojo.class);
 
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
-        return "";
+        return new ArrayList<>();
 
     }
 
